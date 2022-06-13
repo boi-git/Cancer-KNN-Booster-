@@ -16,6 +16,27 @@ plt.style.use('ggplot')
 df = pd.read_csv('data.csv')
 
 df.head()
+df.drop(['id', 'Unnamed: 32'], axis = 1, inplace = True)
+df.diagnosis.unique()
+df['diagnosis'] = df['diagnosis'].apply(lambda val: 1 if val == 'M' else 0)
+df.isna().sum()
+msno.bar(df)
+#%%
+plt.figure(figsize = (20, 15))
+plotnumber = 1
+
+for column in df:
+    if plotnumber <= 30:
+        ax = plt.subplot(5, 6, plotnumber)
+        sns.distplot(df[column])
+        plt.xlabel(column)
+        
+    plotnumber += 1
+
+plt.tight_layout()
+plt.show()
+
+#%%
 plt.figure(figsize = (20, 12))
 
 corr = df.corr()
