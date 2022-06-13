@@ -79,7 +79,7 @@ grid_search_gbc = GridSearchCV(gbc, parameters, cv = 5, n_jobs = -1, verbose = 1
 grid_search_gbc.fit(X_train, y_train)
 grid_search_gbc.best_params_
 grid_search_gbc.best_score_
-gbc = GradientBoostingClassifier(learning_rate = 1, loss = 'exponential', n_estimators = 200)
+gbc = GradientBoostingClassifier(learning_rate = 0.1, loss = 'exponential', n_estimators = 200)
 gbc.fit(X_train, y_train)
 y_pred = gbc.predict(X_test)
 # %%
